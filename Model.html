@@ -14382,6 +14382,65 @@ Epoch 7/7
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Behavioral Cloning Project</strong></p>
+<p>The goals / steps of this project are the following:</p>
+<ul>
+<li>Use the simulator to collect data of good driving behavior</li>
+<li>Build, a convolution neural network in Keras that predicts steering angles from images</li>
+<li>Train and validate the model with a training and validation set</li>
+<li>Test that the model successfully drives around track one without leaving the road</li>
+<li>Summarize the results with a written report</li>
+</ul>
+<h4 id="Files-Submitted-&amp;-Code-Quality">Files Submitted &amp; Code Quality<a class="anchor-link" href="#Files-Submitted-&amp;-Code-Quality">&#182;</a></h4><p><em>1. Submission includes all required files and can be used to run the simulator in autonomous mode</em></p>
+<p>My project includes the following files:</p>
+<ul>
+<li>Model.ipynb containing the script to create and train the model</li>
+<li>drive.py for driving the car in autonomous mode; Changed the speed to 15 from the default udacity code</li>
+<li>model.h5 containing a trained convolution neural network</li>
+<li>writeup_report.md or writeup_report.pdf summarizing the results</li>
+</ul>
+<p><em>2. Submission includes functional code</em>
+Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing</p>
+<div class="highlight"><pre><span></span>python drive.py model.h5
+</pre></div>
+<p><em>3. Submission code is usable and readable</em>
+The Model.ipynb file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.</p>
+<h4 id="Model-Architecture-and-Training-Strategy">Model Architecture and Training Strategy<a class="anchor-link" href="#Model-Architecture-and-Training-Strategy">&#182;</a></h4><p><em>1. An appropriate model architecture has been employed</em></p>
+<p>My model is a slightly modified version of the Nvidia architecture described in class (<a href="http://images.nvidia.com/content/tegra/automotive/images/">http://images.nvidia.com/content/tegra/automotive/images/</a> 2016/solutions/pdf/end-to-end-dl-using-px.pdf).
+Figure 4 and "section 4 Network Architecture" provided all the details for the base implementation. I expermiented with different max pooloing   and dropout  layers. Finally settled on a single additional batch normalization layer after the first Convolution layer.</p>
+<p>I also used the cropping layer + normalization layer as described in the lectures. This is done before the convolution layers.</p>
+<p><em>2. Attempts to reduce overfitting in the model</em></p>
+<p>Experimented with dropout layers. The best accuracy was with the additional batch norm layer.</p>
+<p>The model was trained and validated on different data sets to ensure that the model was not overfitting. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.</p>
+<p><em>3. Model parameter tuning</em></p>
+<p>The model used an adam optimizer, so the learning rate was not tuned manually.</p>
+<p><em>4. Appropriate training data</em></p>
+<p>I tried to generate my own images from running the simulator. The simulator did not work very well on my computer and would hang. I guess I need a more powerful machine. The fan on this laptop sounds like its on the verge of blowing up.
+I eventually used the images provided. Center+left+right camera images. I flipped some randomly picked images as can be seen in the graph after  cnt 8000. I set the validation split to be 25%</p>
+<h4 id="Model-Architecture-and-Training-Strategy">Model Architecture and Training Strategy<a class="anchor-link" href="#Model-Architecture-and-Training-Strategy">&#182;</a></h4><p><em>1. Solution Design Approach</em></p>
+<ol>
+<li>Try to collect training images using simulator</li>
+<li>Used udacity training data</li>
+<li>Crop and normalize layers using keras</li>
+<li>Nvidia deep learning network model</li>
+<li>Experiment with different batch norm/max pooling/drop out layers. Captured model.h5 files and moitored validation accuracy.</li>
+<li>Tweaked the steering angle in the original training data and tried the network.</li>
+<li>Picked the best model that runs on the simulator in auto mode</li>
+</ol>
+<p><em>2. Final Model Architecture</em>
+Described above</p>
+<p><em>3. Creation of the Training Set &amp; Training Process</em>
+Collecting my own images did not work very well.
+~</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
